@@ -4,6 +4,8 @@
   vars:
     domain_name: "{{ lookup('env', 'DOMAIN_NAME') }}"
   tasks:
-    - name: Test
-      debug:
-        msg: Hello World!
+    - name: Sync objects | static S3
+      community.aws.s3_sync:
+        bucket: "{{ domain_name }}_static"
+        file_change_strategy: checksum
+        file_root: ../dist
