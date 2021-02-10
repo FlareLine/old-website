@@ -1,5 +1,5 @@
 name: ansible-playbook
-descripot: Run an Ansible playbook
+description: Run an Ansible playbook
 inputs:
   playbook:
     description: The playbook file to run.
@@ -11,5 +11,5 @@ run:
   using: docker
   image: Dockerfile
   args:
-    playbook: ${{ inputs.playbook }}
-    requirements: ${{ inputs.requirements }}
+    - ${{ inputs.playbook }}
+    - ${{ inputs.requirements }}

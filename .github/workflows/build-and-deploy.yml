@@ -45,5 +45,5 @@ jobs:
     - name: Run deployment playbook
       uses: ./.github/actions/ansible-playbook
       with:
-        requirements: deploy/requirements.yml
         playbook: deploy/deploy-stack.yml
+        requirements: deploy/requirements.yml
