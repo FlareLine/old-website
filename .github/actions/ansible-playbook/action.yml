@@ -11,5 +11,5 @@ run:
   using: docker
   image: Dockerfile
   args:
-    - ${{ inputs.playbook }}
-    - ${{ inputs.requirements }}
+    - 'deploy/deploy-stack.yml'
+    - 'deploy/requirements.yml'
