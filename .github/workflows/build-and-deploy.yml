@@ -48,4 +48,3 @@ jobs:
       uses: ./.github/actions/ansible-playbook
       with:
         playbook: deploy/deploy-stack.yml
-        requirements: deploy/requirements.yml
