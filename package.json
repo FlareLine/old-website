@@ -6,9 +6,23 @@
   "repository": "https://github.com/FlareLine/flareline.com",
   "author": "Ethan Wright <ethan@flareline.com>",
   "license": "ISC",
+  "scripts": {
+    "build": "node_modules/.bin/webpack",
+    "start": "node_modules/.bin/webpack-dev-server"
+  },
   "dependencies": {
     "@popperjs/core": "^2.5.4",
     "bootstrap": "^5.0.0-beta1",
     "feather-icons": "^4.28.0"
+  },
+  "devDependencies": {
+    "css-loader": "^4.2.1",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "serve": "^11.3.2",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
