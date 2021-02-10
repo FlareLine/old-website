@@ -6,10 +6,10 @@
   tasks:
     - name: Ensure bucket | static S3
       s3_bucket:
-        name: "{{ domain_name }}_static"
+        name: "{{ domain_name }}-static"
         state: present
     - name: Sync objects | static S3
       community.aws.s3_sync:
-        bucket: "{{ domain_name }}_static"
+        bucket: "{{ domain_name }}-static"
         file_change_strategy: checksum
         file_root: ../dist
