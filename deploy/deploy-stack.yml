@@ -1,0 +1,9 @@
+---
+- name: Deploy to AWS
+  hosts: localhost
+  vars:
+    domain_name: "{{ lookup('env', 'DOMAIN_NAME') }}"
+  tasks:
+    - name: Test
+      debug:
+        msg: Hello World!

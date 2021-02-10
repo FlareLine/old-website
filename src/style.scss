@@ -1,0 +1,52 @@
+$theme-colors: (
+  "primary": #86bbd8,
+  "secondary": #336699,
+  "success": #65a490,
+  "info": #a4aeb7,
+  "warning": #ffa91f,
+  "danger": #9d061f,
+  "light": #f4fff8,
+  "dark": #2d3539,
+);
+
+@import "~bootstrap/scss/bootstrap";
+
+@font-face {
+  font-family: lotion-regular;
+  src: url("https://gitlab.com/nefertiti/lotion-dist/-/blob/master/Lotion-Regular.otf") format("opentype");
+}
+
+html, body {
+  height: 100%;
+  font-family: lotion-regular, Courier, sans-serif;
+}
+
+a {
+  @extend .text-white;
+  @extend .py-2;
+  text-decoration: none;
+}
+
+.showcase, .showcase * {
+  text-align: center;
+  list-style-type: none;
+}
+
+.icons {
+  @extend .row;
+  @extend .justify-content-center;
+}
+
+.icons a {
+  @extend .col-auto;
+  @extend .text-white;
+  @extend .py-2;
+}
+
+.icons a:hover {
+  @extend .text-white-50
+}
+
+.icons a * {
+  pointer-events: none;
+}

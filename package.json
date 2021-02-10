@@ -1,0 +1,14 @@
+{
+  "name": "flareline.com",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "main": "index.js",
+  "repository": "https://github.com/FlareLine/flareline.com",
+  "author": "Ethan Wright <ethan@flareline.com>",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.5.4",
+    "bootstrap": "^5.0.0-beta1",
+    "feather-icons": "^4.28.0"
+  }
+}
