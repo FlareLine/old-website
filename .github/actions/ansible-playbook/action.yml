@@ -7,9 +7,9 @@ inputs:
   requirements:
     description: The path of the requirements.yml file.
     required: false
-run:
+runs:
   using: docker
   image: Dockerfile
   args:
-    - 'deploy/deploy-stack.yml'
-    - 'deploy/requirements.yml'
+    - ${{ inputs.playbook }}
+    - ${{ inputs.requirements }}
