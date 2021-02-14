@@ -1,10 +1,13 @@
 ---
 - name: Deploy to AWS
   hosts: localhost
-  vars:
-    domain_name: "{{ lookup('env', 'DOMAIN_NAME') }}"
   tasks:
-    - name: Ensure bucket | static S3
+    - name: retrieve facts from environment variables
+      set_fact:
+        domain_name: "{{ lookup('env', 'DOMAIN_NAME') }}"
+    - name: acm - include tasks
+      include: acm.yml
+    - name: static s3 - ensure bucket
       s3_bucket:
         name: "{{ domain_name }}-static"
         public_access:
@@ -15,8 +18,24 @@
         tags:
           Environment: Production
         state: present
-    - name: Sync objects | static S3
+      register: static_s3_bucket_result
+    - name: static s3 - sync bucket
       s3_sync:
         bucket: "{{ domain_name }}-static"
         file_change_strategy: checksum
         file_root: ../dist
+    - name: cloudfront - generate variables
+      set_fact:
+        domain_names:
+          - "{{ domain_name }}"
+          - "www.{{ domain_name }}"
+    - name: cloudfront - ensure distribution
+      community.aws.cloudfront_distribution:
+        aliases: "{{ domain_names }}"
+        default_root_object: index.html
+        enabled: yes
+        origins:
+          - domain_name:
+            s3_origin_access_identity_enabled: yes
+        price_class: PriceClass_All
+

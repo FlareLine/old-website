@@ -1,0 +1,25 @@
+---
+- name: acm - list certificates
+  community.aws.aws_acm_info:
+    domain_name: "{{ domain_name }}"
+  register: certificate_list
+
+- name: debug
+  debug:
+    msg: "{{ domain_name }}"
+
+- name: debug
+  debug:
+    msg: "{{ certificate_list }}"
+
+- name: acm - request certificate
+  shell: aws acm request-certificate --domain-name "{{ domain_name }}" --domain-validation-options DomainName="{{ domain_name }}",ValidationDomain="{{ domain_name }}"
+  when: certificate_list is defined and certificate_list.length == 0
+  register: new_certificate
+
+- name: acm - list certificates
+  community.aws.aws_acm_info:
+    domain_name: "{{ domain_name }}"
+  register: certificate_list
+  failed_when: certificate_list is defined and certificate_list.length == 0
+  when: new_certificate is defined
