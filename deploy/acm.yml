@@ -14,7 +14,7 @@
 
 - name: acm - request certificate
   shell: aws acm request-certificate --domain-name "{{ domain_name }}" --domain-validation-options DomainName="{{ domain_name }}",ValidationDomain="{{ domain_name }}"
-  when: certificate_list is defined and certificate_list.certificates is defined and certificates_list.certificates.length == 0
+  when: certificate_list is defined and certificate_list.certificates is defined and certificate_list.certificates.length == 0
   register: new_certificate
 
 - name: acm - list certificates
